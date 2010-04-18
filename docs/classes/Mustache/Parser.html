@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Mustache::Parser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Mustache::Parser 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/mustache/parser_rb.html">lib/mustache/parser.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The <a href="Parser.html">Parser</a> is responsible for taking a string
+template and converting it into an array of tokens and, really,
+expressions. It raises <a href="Parser/SyntaxError.html">SyntaxError</a> if
+there is anything it doesn&#8217;t understand and knows which sigil
+corresponds to which tag type.
+</p>
+<p>
+For example, given this template:
+</p>
+<pre>
+  Hi {{thing}}!
+</pre>
+<p>
+Run through the <a href="Parser.html">Parser</a> we&#8217;ll get these
+tokens:
+</p>
+<pre>
+  [:multi,
+    [:static, &quot;Hi &quot;],
+    [:mustache, :etag, &quot;thing&quot;],
+    [:static, &quot;!\n&quot;]]
+</pre>
+<p>
+You can see the array of tokens for any template with the mustache(1)
+command line tool:
+</p>
+<pre>
+  $ mustache --tokens test.mustache
+  [:multi, [:static, &quot;Hi &quot;], [:mustache, :etag, &quot;thing&quot;], [:static, &quot;!\n&quot;]]
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000025">compile</a>,</li>
+                
+                <li><a href="#M000024">ctag</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000035">error</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000022">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>O</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000023">otag</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000032">position</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000034">regexp</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000026">scan_tags</a>,</li>
+                
+                <li><a href="#M000029">scan_text</a>,</li>
+                
+                <li><a href="#M000031">scan_until_exclusive</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Parser/SyntaxError.html">Mustache::Parser::SyntaxError</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">SKIP_WHITESPACE</td>
+            <td>=</td>
+            <td class="attr-value">[ '#', '^', '/' ]</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+After these types of tags, all whitespace will be skipped.
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">ALLOWED_CONTENT</td>
+            <td>=</td>
+            <td class="attr-value">/(\w|[?!\/-])*/</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The content allowed in a tag name.
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">ANY_CONTENT</td>
+            <td>=</td>
+            <td class="attr-value">[ '!', '=' ]</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+These types of tags allow any content, the rest only allow <a
+href="Parser.html#ALLOWED_CONTENT">ALLOWED_CONTENT</a>.
+</p>
+</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>scanner</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>result</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [W]
+            </td>
+            <td class='attr-name'>otag</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [W]
+            </td>
+            <td class='attr-name'>ctag</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000022">
+                    
+                    <a name="M000022"></a><b>new</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Accepts an options hash which does nothing but may be used in the future.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000022_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 63</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+      <span class="ruby-ivar">@options</span> = {}
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000025">
+                    
+                    <a name="M000025"></a><b>compile</b>(template)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Given a string template, returns an array of tokens.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000025_source')" id="l_M000025_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L78" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000025_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 78</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compile</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:encoding</span>)
+        <span class="ruby-ivar">@encoding</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">encoding</span>
+        <span class="ruby-identifier">template</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-value str">&quot;BINARY&quot;</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@encoding</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># Keeps information about opened sections.</span>
+      <span class="ruby-ivar">@sections</span> = []
+      <span class="ruby-ivar">@result</span> = [<span class="ruby-identifier">:multi</span>]
+      <span class="ruby-ivar">@scanner</span> = <span class="ruby-constant">StringScanner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">template</span>)
+
+      <span class="ruby-comment cmt"># Scan until the end of the template.</span>
+      <span class="ruby-keyword kw">until</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span>
+        <span class="ruby-identifier">scan_tags</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">scan_text</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@sections</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-comment cmt"># We have parsed the whole file, but there's still opened sections.</span>
+        <span class="ruby-identifier">type</span>, <span class="ruby-identifier">pos</span>, <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@sections</span>.<span class="ruby-identifier">pop</span>
+        <span class="ruby-identifier">error</span> <span class="ruby-node">&quot;Unclosed section #{type.inspect}&quot;</span>, <span class="ruby-identifier">pos</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-ivar">@result</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000024">
+                    
+                    <a name="M000024"></a><b>ctag</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The closing tag delimiter. This too may be changed at runtime.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000024_source')" id="l_M000024_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000024_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 73</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ctag</span>
+      <span class="ruby-ivar">@ctag</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'}}'</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000035">
+                    
+                    <a name="M000035"></a><b>error</b>(message, pos = position)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Raises a <a href="Parser/SyntaxError.html">SyntaxError</a>. The message
+should be the name of the error - other details such as line number and
+position are handled for you.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000035_source')" id="l_M000035_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L227" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000035_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 227</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">position</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">SyntaxError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">pos</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000023">
+                    
+                    <a name="M000023"></a><b>otag</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The opening tag delimiter. This may be changed at runtime.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000023_source')" id="l_M000023_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000023_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 68</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">otag</span>
+      <span class="ruby-ivar">@otag</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'{{'</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000032">
+                    
+                    <a name="M000032"></a><b>position</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns [lineno, column, line]
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000032_source')" id="l_M000032_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L206" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000032_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 206</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">position</span>
+      <span class="ruby-comment cmt"># The rest of the current line</span>
+      <span class="ruby-identifier">rest</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">check_until</span>(<span class="ruby-regexp re">/\n|\Z/</span>).<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">chomp</span>
+
+      <span class="ruby-comment cmt"># What we have parsed so far</span>
+      <span class="ruby-identifier">parsed</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span>]
+
+      <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">parsed</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+
+      [ <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">size</span>, <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rest</span> ]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000034">
+                    
+                    <a name="M000034"></a><b>regexp</b>(thing)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Used to quickly convert a string into a regular expression usable by the
+string scanner.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000034_source')" id="l_M000034_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L220" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000034_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 220</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">regexp</span>(<span class="ruby-identifier">thing</span>)
+      <span class="ruby-node">/#{Regexp.escape(thing)}/</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000026">
+                    
+                    <a name="M000026"></a><b>scan_tags</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Find {{mustaches}} and add them to the @result array.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L106" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000026_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 106</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scan_tags</span>
+      <span class="ruby-comment cmt"># Scan until we hit an opening delimiter.</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">regexp</span>(<span class="ruby-identifier">otag</span>))
+
+      <span class="ruby-comment cmt"># Since {{= rewrites ctag, we store the ctag which should be used</span>
+      <span class="ruby-comment cmt"># when parsing this specific tag.</span>
+      <span class="ruby-identifier">current_ctag</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">ctag</span>
+      <span class="ruby-identifier">type</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/#|\^|\/|=|!|&lt;|&gt;|&amp;|\{/</span>)
+      <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-regexp re">/\s*/</span>)
+
+      <span class="ruby-comment cmt"># ANY_CONTENT tags allow any character inside of them, while</span>
+      <span class="ruby-comment cmt"># other tags (such as variables) are more strict.</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ANY_CONTENT</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">type</span>)
+        <span class="ruby-identifier">r</span> = <span class="ruby-node">/\s*#{regexp(type)}?#{regexp(current_ctag)}/</span>
+        <span class="ruby-identifier">content</span> = <span class="ruby-identifier">scan_until_exclusive</span>(<span class="ruby-identifier">r</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">content</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">ALLOWED_CONTENT</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># We found {{ but we can't figure out what's going on inside.</span>
+      <span class="ruby-identifier">error</span> <span class="ruby-value str">&quot;Illegal content in tag&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">content</span>.<span class="ruby-identifier">empty?</span>
+
+      <span class="ruby-comment cmt"># Based on the sigil, do what needs to be done.</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'#'</span>
+        <span class="ruby-identifier">block</span> = [<span class="ruby-identifier">:multi</span>]
+        <span class="ruby-ivar">@result</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">:mustache</span>, <span class="ruby-identifier">:section</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">block</span>]
+        <span class="ruby-ivar">@sections</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">content</span>, <span class="ruby-identifier">position</span>, <span class="ruby-ivar">@result</span>]
+        <span class="ruby-ivar">@result</span> = <span class="ruby-identifier">block</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'^'</span>
+        <span class="ruby-identifier">block</span> = [<span class="ruby-identifier">:multi</span>]
+        <span class="ruby-ivar">@result</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">:mustache</span>, <span class="ruby-identifier">:inverted_section</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">block</span>]
+        <span class="ruby-ivar">@sections</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">content</span>, <span class="ruby-identifier">position</span>, <span class="ruby-ivar">@result</span>]
+        <span class="ruby-ivar">@result</span> = <span class="ruby-identifier">block</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'/'</span>
+        <span class="ruby-identifier">section</span>, <span class="ruby-identifier">pos</span>, <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@sections</span>.<span class="ruby-identifier">pop</span>
+        <span class="ruby-ivar">@result</span> = <span class="ruby-identifier">result</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-identifier">error</span> <span class="ruby-node">&quot;Closing unopened #{content.inspect}&quot;</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">section</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">content</span>
+          <span class="ruby-identifier">error</span> <span class="ruby-node">&quot;Unclosed section #{section.inspect}&quot;</span>, <span class="ruby-identifier">pos</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'!'</span>
+        <span class="ruby-comment cmt"># ignore comments</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'='</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">otag</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">ctag</span> = <span class="ruby-identifier">content</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">' '</span>, <span class="ruby-value">2</span>)
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'&gt;'</span>, <span class="ruby-value str">'&lt;'</span>
+        <span class="ruby-ivar">@result</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">:mustache</span>, <span class="ruby-identifier">:partial</span>, <span class="ruby-identifier">content</span>]
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'{'</span>, <span class="ruby-value str">'&amp;'</span>
+        <span class="ruby-comment cmt"># The closing } in unescaped tags is just a hack for</span>
+        <span class="ruby-comment cmt"># aesthetics.</span>
+        <span class="ruby-identifier">type</span> = <span class="ruby-value str">&quot;}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;{&quot;</span>
+        <span class="ruby-ivar">@result</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">:mustache</span>, <span class="ruby-identifier">:utag</span>, <span class="ruby-identifier">content</span>]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@result</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">:mustache</span>, <span class="ruby-identifier">:etag</span>, <span class="ruby-identifier">content</span>]
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># Skip whitespace and any balancing sigils after the content</span>
+      <span class="ruby-comment cmt"># inside this tag.</span>
+      <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-regexp re">/\s+/</span>)
+      <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-identifier">regexp</span>(<span class="ruby-identifier">type</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span>
+
+      <span class="ruby-comment cmt"># Try to find the closing tag.</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">close</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">regexp</span>(<span class="ruby-identifier">current_ctag</span>))
+        <span class="ruby-identifier">error</span> <span class="ruby-value str">&quot;Unclosed tag&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># Skip whitespace following this tag if we need to.</span>
+      <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-regexp re">/\s+/</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">SKIP_WHITESPACE</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">type</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000029">
+                    
+                    <a name="M000029"></a><b>scan_text</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Try to find static text, e.g. raw HTML with no {{mustaches}}.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000029_source')" id="l_M000029_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L179" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000029_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 179</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scan_text</span>
+      <span class="ruby-identifier">text</span> = <span class="ruby-identifier">scan_until_exclusive</span>(<span class="ruby-identifier">regexp</span>(<span class="ruby-identifier">otag</span>))
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-comment cmt"># Couldn't find any otag, which means the rest is just static text.</span>
+        <span class="ruby-identifier">text</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
+        <span class="ruby-comment cmt"># Mark as done.</span>
+        <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">clear</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">text</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-ivar">@encoding</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@encoding</span>
+
+      <span class="ruby-ivar">@result</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">:static</span>, <span class="ruby-identifier">text</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000031">
+                    
+                    <a name="M000031"></a><b>scan_until_exclusive</b>(regexp)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Scans the string until the pattern is matched. Returns the substring
+<b>excluding</b> the end of the match, advancing the scan pointer to that
+location. If there is no match, nil is returned.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f7cf8113dbb752088b188bbdb5740a65112d6621/lib/mustache/parser.rb#L197" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000031_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/parser.rb, line 197</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scan_until_exclusive</span>(<span class="ruby-identifier">regexp</span>)
+      <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-identifier">regexp</span>)
+        <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> <span class="ruby-operator">-=</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">matched</span>.<span class="ruby-identifier">size</span>
+        <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pre_match</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

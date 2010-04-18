@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>README.md</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            README.md
+        </h1>
+        <ul class="files">
+            <li>README.md</li>
+            <li>Last modified: Fri Apr 02 21:06:00 -0400 2010</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <h1>Mustache</h1>
+
+<p>Inspired by <a href="http://code.google.com/p/google-ctemplate/">ctemplate</a> and <a href="http://www.ivan.fomichev.name/2008/05/erlang-template-engine-prototype.html">et</a>, Mustache is a
+framework-agnostic way to render logic-free views.</p>
+
+<p>As ctemplates says, "It emphasizes separating logic from presentation:
+it is impossible to embed application logic in this template language."</p>
+
+<p>For a list of implementations (other than Ruby) and tips, see
+<a href="http://mustache.github.com/">http://mustache.github.com/</a>.</p>
+
+<h2>Overview</h2>
+
+<p>Think of Mustache as a replacement for your views. Instead of views
+consisting of ERB or HAML with random helpers and arbitrary logic,
+your views are broken into two parts: a Ruby class and an HTML
+template.</p>
+
+<p>We call the Ruby class the "view" and the HTML template the
+"template."</p>
+
+<p>All your logic, decisions, and code is contained in your view. All
+your markup is contained in your template. The template does nothing
+but reference methods in your view.</p>
+
+<p>This strict separation makes it easier to write clean templates,
+easier to test your views, and more fun to work on your app's front end.</p>
+
+<h2>Why?</h2>
+
+<p>I like writing Ruby. I like writing HTML. I like writing JavaScript.</p>
+
+<p>I don't like writing ERB, Haml, Liquid, Django Templates, putting Ruby
+in my HTML, or putting JavaScript in my HTML.</p>
+
+<h2>Usage</h2>
+
+<p>Quick example:</p>
+
+<pre><code>&gt;&gt; require 'mustache'
+=&gt; true
+&gt;&gt; Mustache.render("Hello {{planet}}", :planet =&gt; "World!")
+=&gt; "Hello World!"
+</code></pre>
+
+<p>We've got an <code>examples</code> folder but here's the canonical one:</p>
+
+<pre><code>class Simple &lt; Mustache
+  def name
+    "Chris"
+  end
+
+  def value
+    10_000
+  end
+
+  def taxed_value
+    value - (value * 0.4)
+  end
+
+  def in_ca
+    true
+  end
+end
+</code></pre>
+
+<p>We simply create a normal Ruby class and define methods. Some methods
+reference others, some return values, some return only booleans.</p>
+
+<p>Now let's write the template:</p>
+
+<pre><code>Hello {{name}}
+You have just won ${{value}}!
+{{#in_ca}}
+Well, ${{taxed_value}}, after taxes.
+{{/in_ca}}
+</code></pre>
+
+<p>This template references our view methods. To bring it all together,
+here's the code to render actual HTML;</p>
+
+<pre><code>Simple.render
+</code></pre>
+
+<p>Which returns the following:</p>
+
+<pre><code>Hello Chris
+You have just won $10000!
+Well, $6000.0, after taxes.
+</code></pre>
+
+<p>Simple.</p>
+
+<h2>Tag Types</h2>
+
+<p>For a language-agnostic overview of Mustache's template syntax, see
+the <code>mustache(5)</code> manpage or
+<a href="http://mustache.github.com/mustache.5.html">http://mustache.github.com/mustache.5.html</a>.</p>
+
+<h2>Escaping</h2>
+
+<p>Mustache does escape all values when using the standard double
+Mustache syntax. Characters which will be escaped: <code>&amp; \ " &lt; &gt;</code>. To
+disable escaping, simply use tripple mustaches like
+<code>{{{unescaped_variable}}}</code>.</p>
+
+<p>Example: Using <code>{{variable}}</code> inside a template for <code>5 &gt; 2</code> will
+result in <code>5 &amp;gt; 2</code>, where as the usage of <code>{{{variable}}}</code> will
+result in <code>5 &gt; 2</code>.</p>
+
+<h2>Dict-Style Views</h2>
+
+<p>ctemplate and friends want you to hand a dictionary to the template
+processor. Mustache supports a similar concept. Feel free to mix the
+class-based and this more procedural style at your leisure.</p>
+
+<p>Given this template (winner.mustache):</p>
+
+<pre><code>Hello {{name}}
+You have just won ${{value}}!
+</code></pre>
+
+<p>We can fill in the values at will:</p>
+
+<pre><code>view = Winner.new
+view[:name] = 'George'
+view[:value] = 100
+view.render
+</code></pre>
+
+<p>Which returns:</p>
+
+<pre><code>Hello George
+You have just won $100!
+</code></pre>
+
+<p>We can re-use the same object, too:</p>
+
+<pre><code>view[:name] = 'Tony'
+view.render
+Hello Tony
+You have just won $100!
+</code></pre>
+
+<h2>Templates</h2>
+
+<p>A word on templates. By default, a view will try to find its template
+on disk by searching for an HTML file in the current directory that
+follows the classic Ruby naming convention.</p>
+
+<pre><code>TemplatePartial =&gt; ./template_partial.mustache
+</code></pre>
+
+<p>You can set the search path using <code>Mustache.template_path</code>. It can be set on a
+class by class basis:</p>
+
+<pre><code>class Simple &lt; Mustache
+  self.template_path = File.dirname(__FILE__)
+  ... etc ...
+end
+</code></pre>
+
+<p>Now <code>Simple</code> will look for <code>simple.mustache</code> in the directory it resides
+in, no matter the cwd.</p>
+
+<p>If you want to just change what template is used you can set
+<code>Mustache.template_file</code> directly:</p>
+
+<pre><code>Simple.template_file = './blah.mustache'
+</code></pre>
+
+<p>Mustache also allows you to define the extension it'll use.</p>
+
+<pre><code>Simple.template_extension = 'xml'
+</code></pre>
+
+<p>Given all other defaults, the above line will cause Mustache to look
+for './blah.xml'</p>
+
+<p>Feel free to set the template directly:</p>
+
+<pre><code>Simple.template = 'Hi {{person}}!'
+</code></pre>
+
+<p>Or set a different template for a single instance:</p>
+
+<pre><code>Simple.new.template = 'Hi {{person}}!'
+</code></pre>
+
+<p>Whatever works.</p>
+
+<h2>Views</h2>
+
+<p>Mustache supports a bit of magic when it comes to views. If you're
+authoring a plugin or extension for a web framework (Sinatra, Rails,
+etc), check out the <code>view_namespace</code> and <code>view_path</code> settings on the
+<code>Mustache</code> class. They will surely provide needed assistance.</p>
+
+<h2>Helpers</h2>
+
+<p>What about global helpers? Maybe you have a nifty <code>gravatar</code> function
+you want to use in all your views? No problem.</p>
+
+<p>This is just Ruby, after all.</p>
+
+<pre><code>module ViewHelpers
+  def gravatar(email, size = 30)
+    gravatar_id = Digest::MD5.hexdigest(email.to_s.strip.downcase)
+    gravatar_for_id(gravatar_id, size)
+  end
+
+  def gravatar_for_id(gid, size = 30)
+    "#{gravatar_host}/avatar/#{gid}?s=#{size}"
+  end
+
+  def gravatar_host
+    @ssl ? 'https://secure.gravatar.com' : 'http://www.gravatar.com'
+  end
+end
+</code></pre>
+
+<p>Then just include it:</p>
+
+<pre><code>class Simple &lt; Mustache
+  include ViewHelpers
+
+  def name
+    "Chris"
+  end
+
+  def value
+    10_000
+  end
+
+  def taxed_value
+    value - (value * 0.4)
+  end
+
+  def in_ca
+    true
+  end
+end
+</code></pre>
+
+<p>Great, but what about that <code>@ssl</code> ivar in <code>gravatar_host</code>? There are
+many ways we can go about setting it.</p>
+
+<p>Here's on example which illustrates a key feature of Mustache: you
+are free to use the <code>initialize</code> method just as you would in any
+normal class.</p>
+
+<pre><code>class Simple &lt; Mustache
+  include ViewHelpers
+
+  def initialize(ssl = false)
+    @ssl = ssl
+  end
+
+  ... etc ...
+end
+</code></pre>
+
+<p>Now:</p>
+
+<pre><code>Simple.new(request.ssl?).render
+</code></pre>
+
+<p>Convoluted but you get the idea.</p>
+
+<h2>Sinatra</h2>
+
+<p>Mustache ships with Sinatra integration. Please see
+<code>lib/mustache/sinatra.rb</code> or
+<a href="http://github.com/defunkt/mustache/blob/master/lib/mustache/sinatra.rb">http://github.com/defunkt/mustache/blob/master/lib/mustache/sinatra.rb</a>
+for complete documentation.</p>
+
+<p>An example Sinatra application is also provided:
+<a href="http://github.com/defunkt/mustache-sinatra-example">http://github.com/defunkt/mustache-sinatra-example</a></p>
+
+<p>If you are upgrading to Sinatra 1.0 and Mustache 0.9.0+ from Mustache
+0.7.0 or lower, the settings have changed. But not that much.</p>
+
+<p>See <a href="http://gist.github.com/345490">this diff</a> for what you need to
+do. Basically, things are named properly now and all should be
+contained in a hash set using <code>set :mustache, hash</code>.</p>
+
+<h2><a href="http://github.com/brynary/rack-bug/">Rack::Bug</a></h2>
+
+<p>Mustache also ships with a <code>Rack::Bug</code> panel. In your <code>config.ru</code> add
+the following code:</p>
+
+<pre><code>require 'rack/bug/panels/mustache_panel'
+use Rack::Bug::MustachePanel
+</code></pre>
+
+<p>Using Rails? Add this to your initializer or environment file:</p>
+
+<pre><code>require 'rack/bug/panels/mustache_panel'
+config.middleware.use "Rack::Bug::MustachePanel"
+</code></pre>
+
+<p><a href="http://img.skitch.com/20091027-n8pxwwx8r61tc318a15q1n6m14.png"><img src="http://img.skitch.com/20091027-xyf4h1yxnefpp7usyddrcmc7dn.png" alt="Rack::Bug" /></a></p>
+
+<h2>Vim</h2>
+
+<p>Thanks to <a href="http://github.com/juvenn">Juvenn Woo</a> for mustache.vim. It
+is included under the contrib/ directory.</p>
+
+<p>See <a href="http://gist.github.com/323622">http://gist.github.com/323622</a> for installation instructions.</p>
+
+<h2>Emacs</h2>
+
+<p>mustache-mode.el is included under the contrib/ directory for any
+Emacs users. Based on Google's tpl-mode for ctemplates, it adds
+support for Mustache's more lenient tag values and includes a few
+commands for your editing pleasure.</p>
+
+<p>See <a href="http://gist.github.com/323619">http://gist.github.com/323619</a> for installation instructions.</p>
+
+<h2>TextMate</h2>
+
+<p><a href="http://github.com/defunkt/Mustache.tmbundle">Mustache.tmbundle</a></p>
+
+<p>See <a href="http://gist.github.com/323624">http://gist.github.com/323624</a> for installation instructions.</p>
+
+<h2>Command Line</h2>
+
+<p>See <code>mustache(1)</code> man page or
+<a href="http://mustache.github.com/mustache.1.html">http://mustache.github.com/mustache.1.html</a>
+for command line docs.</p>
+
+<h2>Installation</h2>
+
+<h3><a href="http://rubygems.org/">RubyGems</a></h3>
+
+<pre><code>$ gem install mustache
+</code></pre>
+
+<h2>Acknowledgements</h2>
+
+<p>Thanks to <a href="http://github.com/mojombo">Tom Preston-Werner</a> for showing
+me ctemplate and <a href="http://github.com/leah">Leah Culver</a> for the name "Mustache."</p>
+
+<p>Special thanks to <a href="http://judofyr.net/">Magnus Holm</a> for all his
+awesome work on Mustache's parser.</p>
+
+<h2>Contributing</h2>
+
+<p>Once you've made your great commits:</p>
+
+<ol>
+<li><a href="http://help.github.com/forking/">Fork</a> Mustache</li>
+<li>Create a topic branch - <code>git checkout -b my_branch</code></li>
+<li>Push to your branch - <code>git push origin my_branch</code></li>
+<li>Create an <a href="http://github.com/defunkt/mustache/issues">Issue</a> with a link to your branch</li>
+<li>That's it!</li>
+</ol>
+
+
+<p>You might want to checkout Resque's <a href="http://wiki.github.com/defunkt/resque/contributing">Contributing</a> wiki page for information
+on coding standards, new features, etc.</p>
+
+<h2>Mailing List</h2>
+
+<p>To join the list simply send an email to <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#109;&#117;&#115;&#x74;&#97;&#99;&#x68;&#101;&#64;&#108;&#x69;&#98;&#114;&#101;&#108;&#x69;&#x73;&#116;&#46;&#99;&#111;&#x6d;">&#109;&#x75;&#115;&#x74;&#x61;&#99;&#x68;&#101;&#x40;&#x6c;&#105;&#x62;&#114;&#101;&#x6c;&#105;&#x73;&#x74;&#46;&#99;&#x6f;&#109;</a>. This
+will subscribe you and send you information about your subscription,
+including unsubscribe information.</p>
+
+<p>The archive can be found at <a href="http://librelist.com/browser/">http://librelist.com/browser/</a>.</p>
+
+<h2>Meta</h2>
+
+<ul>
+<li>Code: <code>git clone git://github.com/defunkt/mustache.git</code></li>
+<li>Home: <a href="http://mustache.github.com">http://mustache.github.com</a></li>
+<li>Bugs: <a href="http://github.com/defunkt/mustache/issues">http://github.com/defunkt/mustache/issues</a></li>
+<li>List: <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#109;&#117;&#x73;&#x74;&#x61;&#99;&#104;&#x65;&#x40;&#108;&#105;&#98;&#x72;&#x65;&#108;&#x69;&#x73;&#116;&#46;&#99;&#x6f;&#x6d;">&#109;&#x75;&#x73;&#x74;&#x61;&#x63;&#x68;&#101;&#64;&#x6c;&#x69;&#x62;&#114;&#101;&#x6c;&#105;&#x73;&#116;&#46;&#99;&#111;&#x6d;</a></li>
+<li>Test: <a href="http://runcoderun.com/defunkt/mustache">http://runcoderun.com/defunkt/mustache</a></li>
+<li>Gems: <a href="http://rubygems.org/gems/mustache">http://rubygems.org/gems/mustache</a></li>
+</ul>
+
+
+<p>You can also find us in <code>#{</code> on irc.freenode.net.</p>
+<script type="text/javascript">$(function() {
+  $('a').each(function() { $(this).attr('target', '_blank') })
+})</script>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

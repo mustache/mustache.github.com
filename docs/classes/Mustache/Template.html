@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Mustache::Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Mustache::Template 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/mustache/template_rb.html">lib/mustache/template.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+A <a href="Template.html">Template</a> represents a <a
+href="../Mustache.html">Mustache</a> template. It compiles and caches a raw
+string template into something usable.
+</p>
+<p>
+The idea is this: when handed a <a href="../Mustache.html">Mustache</a>
+template, convert it into a Ruby string by transforming <a
+href="../Mustache.html">Mustache</a> tags into interpolated Ruby.
+</p>
+<p>
+You shouldn&#8217;t use this class directly, instead:
+</p>
+<p>
+>> <a href="../Mustache.html#M000042">Mustache.render</a>(template, hash)
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000038">compile</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000036">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000037">render</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000039">to_s</a>,</li>
+                
+                <li><a href="#M000040">tokens</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000036">
+                    
+                    <a name="M000036"></a><b>new</b>(source)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Expects a <a href="../Mustache.html">Mustache</a> template as a string
+along with a template path, which it uses to find partials.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000036_source')" id="l_M000036_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/da804b446db079abc37b90102466a7d0b7a9057d/lib/mustache/template.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000036_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/template.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">source</span>)
+      <span class="ruby-ivar">@source</span> = <span class="ruby-identifier">source</span>
+      <span class="ruby-ivar">@tmpid</span> = <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000038">
+                    
+                    <a name="M000038"></a><b>compile</b>(src = @source)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Does the dirty work of transforming a <a
+href="../Mustache.html">Mustache</a> template into an
+interpolation-friendly Ruby string.
+</p>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Template.html#M000039">to_s</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000038_source')" id="l_M000038_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/da804b446db079abc37b90102466a7d0b7a9057d/lib/mustache/template.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000038_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/template.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compile</span>(<span class="ruby-identifier">src</span> = <span class="ruby-ivar">@source</span>)
+      <span class="ruby-constant">Generator</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-identifier">tokens</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000037">
+                    
+                    <a name="M000037"></a><b>render</b>(context)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Renders the `@source` <a href="../Mustache.html">Mustache</a> template
+using the given `context`, which should be a simple hash keyed with
+symbols.
+</p>
+<p>
+The first time a template is rendered, this method is overriden and from
+then on it is &#8220;compiled&#8221;. Subsequent calls will skip the
+compilation step and run the Ruby version of the template directly.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/da804b446db079abc37b90102466a7d0b7a9057d/lib/mustache/template.rb#L34" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000037_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/template.rb, line 34</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">context</span>)
+      <span class="ruby-comment cmt"># Compile our Mustache template into a Ruby string</span>
+      <span class="ruby-identifier">compiled</span> = <span class="ruby-node">&quot;def render(ctx) #{compile} end&quot;</span>
+
+      <span class="ruby-comment cmt"># Here we rewrite ourself with the interpolated Ruby version of</span>
+      <span class="ruby-comment cmt"># our Mustache template so subsequent calls are very fast and</span>
+      <span class="ruby-comment cmt"># can skip the compilation stage.</span>
+      <span class="ruby-identifier">instance_eval</span>(<span class="ruby-identifier">compiled</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+
+      <span class="ruby-comment cmt"># Call the newly rewritten version of #render</span>
+      <span class="ruby-identifier">render</span>(<span class="ruby-identifier">context</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000039">
+                    
+                    <a name="M000039"></a><b>to_s</b>(src = @source)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Template.html#M000038">compile</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000040">
+                    
+                    <a name="M000040"></a><b>tokens</b>(src = @source)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an array of tokens for a given template.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000040_source')" id="l_M000040_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/da804b446db079abc37b90102466a7d0b7a9057d/lib/mustache/template.rb#L55" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000040_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/template.rb, line 55</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tokens</span>(<span class="ruby-identifier">src</span> = <span class="ruby-ivar">@source</span>)
+      <span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-identifier">src</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

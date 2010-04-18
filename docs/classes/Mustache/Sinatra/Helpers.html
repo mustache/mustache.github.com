@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Mustache::Sinatra::Helpers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Mustache::Sinatra::Helpers 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/mustache/sinatra_rb.html">lib/mustache/sinatra.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000030">compile_mustache</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000027">mustache</a>,</li>
+                
+                <li><a href="#M000028">mustache_class</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000030">
+                    
+                    <a name="M000030"></a><b>compile_mustache</b>(view, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Given a view name and settings, finds and prepares an appropriate view
+class for this view.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f3d934fb2bcbf1c6daee081a7673a14a39ecd011/lib/mustache/sinatra.rb#L117" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000030_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/sinatra.rb, line 117</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compile_mustache</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">options</span> = {})
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:templates</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">views</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:views</span>)
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:namespace</span>] <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>
+
+        <span class="ruby-identifier">factory</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Mustache</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">view_namespace</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:namespace</span>]
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">view_path</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:views</span>]
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Try to find the view class for a given view, e.g.</span>
+        <span class="ruby-comment cmt"># :view =&gt; Hurl::Views::Index.</span>
+        <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">view_class</span>(<span class="ruby-identifier">view</span>)
+
+        <span class="ruby-comment cmt"># If there is no view class, issue a warning and use the one</span>
+        <span class="ruby-comment cmt"># we just generated to cache the compiled template.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Mustache</span>
+          <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;No view class found for #{view} in #{factory.view_path}&quot;</span>
+          <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">factory</span>
+
+          <span class="ruby-comment cmt"># If this is a generic view class make sure we set the</span>
+          <span class="ruby-comment cmt"># template name as it was given. That is, an anonymous</span>
+          <span class="ruby-comment cmt"># subclass of Mustache won't know how to find the</span>
+          <span class="ruby-comment cmt"># &quot;index.mustache&quot; template unless we tell it to.</span>
+          <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">template_name</span> = <span class="ruby-identifier">view</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Set the template path and return our class.</span>
+        <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">template_path</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:templates</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:templates</span>]
+        <span class="ruby-identifier">klass</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000027">
+                    
+                    <a name="M000027"></a><b>mustache</b>(template, options={}, locals={})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Call this in your <a href="../Sinatra.html">Sinatra</a> routes.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f3d934fb2bcbf1c6daee081a7673a14a39ecd011/lib/mustache/sinatra.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000027_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/sinatra.rb, line 45</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mustache</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">options</span>={}, <span class="ruby-identifier">locals</span>={})
+        <span class="ruby-comment cmt"># Locals can be passed as options under the :locals key.</span>
+        <span class="ruby-identifier">locals</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:locals</span>) <span class="ruby-operator">||</span> {})
+
+        <span class="ruby-comment cmt"># Grab any user-defined settings.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:mustache</span>)
+          <span class="ruby-identifier">options</span> = <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:mustache</span>).<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Find and cache the view class we want. This ensures the</span>
+        <span class="ruby-comment cmt"># compiled template is cached, too - no looking up and</span>
+        <span class="ruby-comment cmt"># compiling templates on each page load.</span>
+        <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">mustache_class</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">options</span>)
+
+        <span class="ruby-comment cmt"># If they aren't explicitly disabling layouts, try to find</span>
+        <span class="ruby-comment cmt"># one.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:layout</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">false</span>
+          <span class="ruby-comment cmt"># Let the user pass in a layout name.</span>
+          <span class="ruby-identifier">layout_name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:layout</span>]
+
+          <span class="ruby-comment cmt"># If all they said was `true` (or nothing), default to :layout.</span>
+          <span class="ruby-identifier">layout_name</span> = <span class="ruby-identifier">:layout</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout_name</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">layout_name</span>
+
+          <span class="ruby-comment cmt"># If they passed a layout name use that.</span>
+          <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">mustache_class</span>(<span class="ruby-identifier">layout_name</span>, <span class="ruby-identifier">options</span>)
+
+          <span class="ruby-comment cmt"># If it's just an anonymous subclass then don't bother, otherwise</span>
+          <span class="ruby-comment cmt"># give us a layout instance.</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">empty?</span>
+            <span class="ruby-identifier">layout</span> = <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">new</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-comment cmt"># Does the view subclass the layout? If so we'll use the</span>
+          <span class="ruby-comment cmt"># view to render the layout so you can override layout</span>
+          <span class="ruby-comment cmt"># methods in your view - tricky.</span>
+          <span class="ruby-identifier">view_subclasses_layout</span> = <span class="ruby-identifier">klass</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">class</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Create a new instance for playing with.</span>
+        <span class="ruby-identifier">instance</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>
+
+        <span class="ruby-comment cmt"># Copy instance variables set in Sinatra to the view</span>
+        <span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>))
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Render with locals.</span>
+        <span class="ruby-identifier">rendered</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">template</span>, <span class="ruby-identifier">locals</span>)
+
+        <span class="ruby-comment cmt"># Now render the layout with the view we just rendered, if we</span>
+        <span class="ruby-comment cmt"># need to.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">view_subclasses_layout</span>
+          <span class="ruby-identifier">rendered</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">layout</span>.<span class="ruby-identifier">template</span>, <span class="ruby-identifier">:yield</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rendered</span>)
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">layout</span>
+          <span class="ruby-identifier">rendered</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">layout</span>.<span class="ruby-identifier">template</span>, <span class="ruby-identifier">:yield</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rendered</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># That's it.</span>
+        <span class="ruby-identifier">rendered</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000028">
+                    
+                    <a name="M000028"></a><b>mustache_class</b>(template, options)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a View class for a given template name.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000028_source')" id="l_M000028_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f3d934fb2bcbf1c6daee081a7673a14a39ecd011/lib/mustache/sinatra.rb#L109" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000028_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/sinatra.rb, line 109</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mustache_class</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-ivar">@template_cache</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">:mustache</span>, <span class="ruby-identifier">template</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">compile_mustache</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

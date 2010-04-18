@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Mustache::Sinatra</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Mustache::Sinatra 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/mustache/sinatra_rb.html">lib/mustache/sinatra.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Support for <a href="../Mustache.html">Mustache</a> in your <a
+href="Sinatra.html">Sinatra</a> app.
+</p>
+<pre>
+  require 'mustache/sinatra'
+
+  class Hurl &lt; Sinatra::Base
+    register Mustache::Sinatra
+
+    set :mustache, {
+      # Should be the path to your .mustache template files.
+      :templates =&gt; &quot;path/to/mustache/templates&quot;,
+
+      # Should be the path to your .rb Mustache view files.
+      :views =&gt; &quot;path/to/mustache/views&quot;,
+
+      # This tells Mustache where to look for the Views module,
+      # under which your View classes should live. By default it's
+      # the class of your app - in this case `Hurl`. That is, for an :index
+      # view Mustache will expect Hurl::Views::Index by default.
+      # If our Sinatra::Base subclass was instead Hurl::App,
+      # we'd want to do `set :namespace, Hurl::App`
+      :namespace =&gt; Hurl
+    }
+
+    get '/stats' do
+      mustache :stats
+    end
+  end
+</pre>
+<p>
+As noted above, <a href="../Mustache.html">Mustache</a> will look for
+`Hurl::Views::Index` when `mustache :index` is called.
+</p>
+<p>
+If no `Views::Stats` class exists <a href="../Mustache.html">Mustache</a>
+will render the template file directly.
+</p>
+<p>
+You can indeed use layouts with this library. Where you&#8217;d normally
+<%= yield %> you instead {{{yield}}} - the body of the subview is set to
+the `yield` variable and made available to you.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000033">registered</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="Sinatra/Helpers.html">Mustache::Sinatra::Helpers</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000033">
+                    
+                    <a name="M000033"></a><b>registered</b>(app)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Called when you `register Mustache::Sinatra` in your <a
+href="Sinatra.html">Sinatra</a> app.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000033_source')" id="l_M000033_source">show</a>
+                        
+                        | <a href="http://github.com/defunkt/mustache/blob/f3d934fb2bcbf1c6daee081a7673a14a39ecd011/lib/mustache/sinatra.rb#L150" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000033_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/mustache/sinatra.rb, line 150</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">registered</span>(<span class="ruby-identifier">app</span>)
+      <span class="ruby-identifier">app</span>.<span class="ruby-identifier">helpers</span> <span class="ruby-constant">Mustache</span><span class="ruby-operator">::</span><span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Helpers</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    
