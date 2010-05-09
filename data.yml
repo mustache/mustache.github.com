@@ -19,4 +19,8 @@ languages:
   :name: Lua
 - :url: http://github.com/joshthecoder/mustang
   :name: ooc
+- :url: http://github.com/mrtazz/plustache
+  :name: C++
+- :url: http://github.com/hyakugei/mustache.as
+  :name: ActionScript
 ---
