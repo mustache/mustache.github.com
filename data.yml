@@ -23,4 +23,6 @@ languages:
   :name: C++
 - :url: http://github.com/hyakugei/mustache.as
   :name: ActionScript
+- :url: http://github.com/spullara/mustache.java
+  :name: Java
 ---
