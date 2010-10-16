@@ -29,4 +29,6 @@ languages:
   :name: ColdFusion
 - :url: http://github.com/scalate/scalate
   :name: Scala
+- :url: http://github.com/fhd/clostache
+  :name: Clojure
 ---
