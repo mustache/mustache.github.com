@@ -25,8 +25,12 @@ languages:
   :name: ActionScript
 - :url: http://github.com/spullara/mustache.java
   :name: Java
+- :url: http://github.com/samskivert/jmustache
+  :name: Android
 - :url: http://github.com/pmcelhaney/Mustache.cfc
   :name: ColdFusion
 - :url: http://github.com/scalate/scalate
   :name: Scala
+- :url: http://github.com/vspy/mustache
+  :name: Fantom
 ---
