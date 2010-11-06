@@ -20,7 +20,7 @@ class Data
     languages = hash['languages']
     seen = []
 
-    doc = Hpricot(open"http://wiki.github.com/defunkt/mustache/")
+    doc = Hpricot(open"https://github.com/defunkt/mustache/wiki")
     doc.search(".wikistyle li").each do |lib|
       lang = lib.innerText.scan(/\(.+?\)/).to_s.gsub(/\(|\)/, '')
       next if seen.include?(lang)
