@@ -1,36 +1,38 @@
 --- 
 last_language: 
-  :url: http://github.com/raycmorgan/Mu
+  :url: https://github.com/raycmorgan/Mu
   :name: node.js
 languages: 
-- :url: http://github.com/janl/mustache.js
+- :url: https://github.com/janl/mustache.js
   :name: JavaScript
-- :url: http://github.com/defunkt/pystache
+- :url: https://github.com/defunkt/pystache
   :name: Python
-- :url: http://github.com/mojombo/mustache.erl
+- :url: https://github.com/mojombo/mustache.erl
   :name: Erlang
-- :url: http://github.com/bobthecow/mustache.php
+- :url: https://github.com/bobthecow/mustache.php
   :name: PHP
-- :url: http://github.com/pvande/Template-Mustache
+- :url: https://github.com/pvande/Template-Mustache
   :name: Perl
-- :url: http://github.com/hoisie/mustache.go/
+- :url: https://github.com/hoisie/mustache.go/
   :name: Go
-- :url: http://github.com/nrk/hige
+- :url: https://github.com/nrk/hige
   :name: Lua
-- :url: http://github.com/joshthecoder/mustang
+- :url: https://github.com/joshthecoder/mustang
   :name: ooc
-- :url: http://github.com/mrtazz/plustache
+- :url: https://github.com/mrtazz/plustache
   :name: C++
-- :url: http://github.com/hyakugei/mustache.as
+- :url: https://github.com/hyakugei/mustache.as
   :name: ActionScript
-- :url: http://github.com/spullara/mustache.java
+- :url: https://github.com/spullara/mustache.java
   :name: Java
-- :url: http://github.com/samskivert/jmustache
+- :url: https://github.com/samskivert/jmustache
   :name: Android
-- :url: http://github.com/pmcelhaney/Mustache.cfc
+- :url: https://github.com/pmcelhaney/Mustache.cfc
   :name: ColdFusion
-- :url: http://github.com/scalate/scalate
+- :url: https://github.com/scalate/scalate
   :name: Scala
-- :url: http://github.com/vspy/mustache
+- :url: https://github.com/vspy/mustache
   :name: Fantom
+- :url: https://github.com/jdiamond/Nustache
+  :name: .NET
 ---
