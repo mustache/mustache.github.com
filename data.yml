@@ -35,6 +35,8 @@ languages:
   :name: ColdFusion
 - :url: https://github.com/scalate/scalate
   :name: Scala
+- :url: https://github.com/fhd/clostache
+  :name: Clojure
 - :url: https://github.com/vspy/mustache
   :name: Fantom
 ---
