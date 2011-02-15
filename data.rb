@@ -20,8 +20,8 @@ class Data
     languages = hash['languages']
     seen = []
 
-    doc = Hpricot(open"https://github.com/defunkt/mustache/wiki")
-    doc.search(".wikistyle li").each do |lib|
+    doc = Hpricot(open"https://github.com/defunkt/mustache/wiki/Other-Mustache-implementations")
+    doc.search("#template li").each do |lib|
       lang = lib.innerText.scan(/\(.+?\)/).to_s.gsub(/\(|\)/, '')
       next if seen.include?(lang)
       seen << lang
