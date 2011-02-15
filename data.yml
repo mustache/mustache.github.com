@@ -39,4 +39,8 @@ languages:
   :name: Clojure
 - :url: https://github.com/vspy/mustache
   :name: Fantom
+- :url: https://github.com/pvande/Milk
+  :name: CoffeeScript
+- :url: https://github.com/repeatedly/mustache4d
+  :name: D
 ---
