@@ -240,7 +240,7 @@ filters or caching.</p>
 <pre><code>{
   "name": "Willy",
   "wrapped": function() {
-    return function(text) {
+    return function(text, render) {
       return "&lt;b&gt;" + render(text) + "&lt;/b&gt;"
     }
   }
