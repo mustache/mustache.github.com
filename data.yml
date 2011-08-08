@@ -11,6 +11,8 @@ languages:
   :name: Erlang
 - :url: https://github.com/bobthecow/mustache.php
   :name: PHP
+- :url: https://github.com/wesen/proust
+  :name: PHP
 - :url: https://github.com/pvande/Template-Mustache
   :name: Perl
 - :url: https://github.com/groue/GRMustache
