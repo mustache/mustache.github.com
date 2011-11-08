@@ -21,9 +21,12 @@ $ ->
   $('#demo').click() if window.location.hash is "#demo"
 
   $('.run').click ->
-    template = $('.template').val()
-    json = $.parseJSON $('.json').val()
-    html = Mustache.to_html(template, json).replace(/^\s*/mg, '')
+    try
+      template = $('.template').val()
+      json = $.parseJSON $('.json').val()
+      html = Mustache.to_html(template, json).replace(/^\s*/mg, '')
+    catch e
+      html = e.toString()
 
     $('.html').text(html).scrollTo(1)
     Highlight.highlightDocument()
