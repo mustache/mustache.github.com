@@ -1,12 +1,4 @@
-//###
-// Scrolls the window to element:
-//   $('element').scrollTo()
-//   $('element').scrollTo(speed)
-//
-// Scrolls element1 to element2:
-//   $('element1').scrollTo($('element2'))
-//   $('element1').scrollTo($('element2'), speed)
-$.fn.scrollTo = function scrollTo(speed) {
+$.fn.scrollTo = function(speed) {
   var container, offset, target;
   target = this;
   container = 'html,body';
