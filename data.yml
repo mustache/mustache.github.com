@@ -17,6 +17,8 @@ languages:
   :name: Objective-C
 - :url: https://github.com/spullara/mustache.java
   :name: Java
+- :url: https://github.com/jknack/handlebars.java
+  :name: Java
 - :url: https://github.com/jdiamond/Nustache
   :name: .NET
 - :url: https://github.com/samskivert/jmustache
