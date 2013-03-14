@@ -51,6 +51,8 @@
   url:  https://github.com/dscape/mustache.xq
 - name: Io
   url:  https://github.com/mil/mustache.io
+- name: Dart
+  url:  https://github.com/valotas/mustache4dart
 
 # TODO: include handlebars implementations?
 # - name: Java
