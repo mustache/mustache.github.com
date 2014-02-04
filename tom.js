@@ -1,12 +1,4 @@
-//###
-// Scrolls the window to element:
-//   $('element').scrollTo()
-//   $('element').scrollTo(speed)
-//
-// Scrolls element1 to element2:
-//   $('element1').scrollTo($('element2'))
-//   $('element1').scrollTo($('element2'), speed)
-$.fn.scrollTo = function scrollTo(speed) {
+$.fn.scrollTo = function(speed) {
   var container, offset, target;
   target = this;
   container = 'html,body';
@@ -32,9 +24,13 @@ $(function() {
   }
   return $('.run').click(function() {
     var html, json, template;
-    template = $('.template').val();
-    json = $.parseJSON($('.json').val());
-    html = Mustache.to_html(template, json).replace(/^\s*/mg, '');
+    try {
+      template = $('.template').val();
+      json = $.parseJSON($('.json').val());
+      html = Mustache.to_html(template, json).replace(/^\s*/mg, '');
+    } catch (e) {
+      html = e.toString();
+    }
     $('.html').text(html).scrollTo(1);
     return Highlight.highlightDocument();
   });
