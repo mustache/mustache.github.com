@@ -25,7 +25,7 @@ languages:
   :name: C++
 - :url: https://github.com/hoisie/mustache.go/
   :name: Go
-- :url: https://github.com/nrk/hige
+- :url: https://github.com/Olivine-Labs/lustache
   :name: Lua
 - :url: https://github.com/joshthecoder/mustang
   :name: ooc
