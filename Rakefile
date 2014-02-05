@@ -40,8 +40,3 @@ end
 
 desc "Build the whole site"
 task :build => [ "build:coffee", :man ]
-
-desc "Publish gh-pages to GitHub"
-task :publish do
-  sh "git push origin gh-pages"
-end
