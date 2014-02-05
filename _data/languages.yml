@@ -9,6 +9,8 @@
   url:  https://github.com/defunkt/pystache
 - name: Erlang
   url:  https://github.com/mojombo/mustache.erl
+- name: node.js
+  url:  https://github.com/raycmorgan/Mu
 - name: PHP
   url:  https://github.com/bobthecow/mustache.php
 - name: Perl
@@ -17,8 +19,6 @@
   url:  https://github.com/groue/GRMustache
 - name: Java
   url:  https://github.com/spullara/mustache.java
-# - name: Java
-#   url:  https://github.com/jknack/handlebars.java
 - name: .NET
   url:  https://github.com/jdiamond/Nustache
 - name: Android
@@ -49,5 +49,7 @@
   url:  https://github.com/dscape/mustache.xq
 - name: Io
   url:  https://github.com/mil/mustache.io
-- name: node.js
-  url:  https://github.com/raycmorgan/Mu
+
+# TODO: include handlebars implementations?
+# - name: Java
+#   url:  https://github.com/jknack/handlebars.java
