@@ -34,7 +34,7 @@ end
 namespace :build do
   desc "Build JavaScript"
   task :coffee do
-    sh "coffee --no-wrap *.coffee"
+    sh "coffee --compile --bare *.coffee"
   end
 end
 
