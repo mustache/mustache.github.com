@@ -95,18 +95,11 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
       <div id="demo-box" style="display:none;">
         <label>Mustache</label>
         <textarea class="template">
-<h1>{{header}}</h1>
-{{#bug}}
-{{/bug}}
+<h1>{{gameTitle}}</h1>
 
-{{#items}}
-  {{#first}}
-    <li><strong>{{name}}</strong></li>
-  {{/first}}
-  {{#link}}
-    <li><a href="{{url}}">{{name}}</a></li>
-  {{/link}}
-{{/items}}
+{{#players}}
+  <li>{{user}}: {{score}}</li>
+{{/players}}
 
 {{#empty}}
   <p>The list is empty.</p>
@@ -115,11 +108,11 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 
         <label>JSON <small>(try setting empty to true)</small></label>
         <textarea class="json">{
-  "header": "Colors",
-  "items": [
-      {"name": "red", "first": true, "url": "#Red"},
-      {"name": "green", "link": true, "url": "#Green"},
-      {"name": "blue", "link": true, "url": "#Blue"}
+  "gameTitle": "Leaderboard",
+  "players": [
+      {"user": "janl", "score": 300 },
+      {"user": "zuck", "score": 200 },
+      {"user": "dens", "score": 100 }
   ],
   "empty": false
 }</textarea>
