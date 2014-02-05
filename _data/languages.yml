@@ -45,6 +45,8 @@
   url:  https://github.com/pvande/Milk
 - name: D
   url:  https://github.com/repeatedly/mustache4d
+- name: XQuery
+  url:  https://github.com/dscape/mustache.xq
 - name: Io
   url:  https://github.com/mil/mustache.io
 - name: node.js
