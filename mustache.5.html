@@ -192,7 +192,7 @@ list, the HTML between the pound and slash will not be displayed.</p>
 <p>Hash:</p>
 
 <pre><code>{
-  "person": true,
+  "person": true
 }
 </code></pre>
 
@@ -224,7 +224,7 @@ loop over collections.</p>
   "repo": [
     { "name": "resque" },
     { "name": "hub" },
-    { "name": "rip" },
+    { "name": "rip" }
   ]
 }
 </code></pre>
@@ -256,7 +256,7 @@ filters or caching.</p>
 <pre><code>{
   "name": "Willy",
   "wrapped": function() {
-    return function(text) {
+    return function(text, render) {
       return "&lt;b&gt;" + render(text) + "&lt;/b&gt;"
     }
   }
@@ -416,13 +416,13 @@ markup."</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
-<p><a href="mustache.1.ron.html" class="man-ref">mustache<span class="s">(1)</span></a>,
+<p><a class="man-ref" href="mustache.1.ron.html">mustache<span class="s">(1)</span></a>,
 <a href="http://mustache.github.com/" data-bare-link="true">http://mustache.github.com/</a></p>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>DEFUNKT</li>
-    <li class='tc'>August 2011</li>
+    <li class='tc'>February 2014</li>
     <li class='tr'>mustache(5)</li>
   </ol>
 
