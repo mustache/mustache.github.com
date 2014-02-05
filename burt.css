@@ -9,6 +9,7 @@ body {
     width: 200px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
     text-align: center;
     display: block;
     font-size: 250px;
