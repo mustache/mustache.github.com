@@ -4,7 +4,7 @@
 - name: TextMate
   url:  http://gist.github.com/323624
 - name: Vim
-  url:  http://gist.github.com/323622
+  url:  https://github.com/mustache/vim-mustache-handlebars
 - name: Emacs
   url:  http://gist.github.com/323619
 - name: Coda
