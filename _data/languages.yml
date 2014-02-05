@@ -26,7 +26,7 @@
 - name: C++
   url:  https://github.com/mrtazz/plustache
 - name: Go
-  url:  https://github.com/hoisie/mustache.go/
+  url:  https://github.com/hoisie/mustache
 - name: Lua
   url:  https://github.com/Olivine-Labs/lustache
 - name: ooc
