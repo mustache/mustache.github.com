@@ -43,4 +43,6 @@ languages:
   :name: CoffeeScript
 - :url: https://github.com/repeatedly/mustache4d
   :name: D
+- :url: https://github.com/mil/mustache.io
+  :name: Io
 ---
