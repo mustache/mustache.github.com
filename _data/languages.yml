@@ -53,6 +53,8 @@
   url:  https://github.com/mil/mustache.io
 - name: Dart
   url:  https://github.com/valotas/mustache4dart
+- name: Haxe
+  url:  https://github.com/TomahawX/Mustache.hx
 
 # TODO: include handlebars implementations?
 # - name: Java
