@@ -1,0 +1,11 @@
+---
+# Please add new editors to the end!
+
+- name: TextMate
+  url:  http://gist.github.com/323624
+- name: Vim
+  url:  http://gist.github.com/323622
+- name: Emacs
+  url:  http://gist.github.com/323619
+- name: Coda
+  url:  http://github.com/bobthecow/Mustache.mode
