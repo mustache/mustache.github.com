@@ -1,1 +1,2 @@
 name: '{{ mustache }}'
+markdown: redcarpet
