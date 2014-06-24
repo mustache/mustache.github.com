@@ -15,6 +15,8 @@
   url:  https://github.com/bobthecow/mustache.php
 - name: Perl
   url:  https://github.com/pvande/Template-Mustache
+- name: Perl6
+  url:  https://github.com/softmoth/p6-Template-Mustache
 - name: Objective-C
   url:  https://github.com/groue/GRMustache
 - name: Java
