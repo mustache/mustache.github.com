@@ -61,6 +61,8 @@
   url:  https://github.com/TomahawX/Mustache.hx
 - name: Delphi
   url:  https://github.com/synopse/dmustache
+- name: Racket
+  url:  https://github.com/rcherrueau/rastache
 
 # TODO: include handlebars implementations?
 # - name: Java
