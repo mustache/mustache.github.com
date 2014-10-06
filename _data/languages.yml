@@ -63,6 +63,8 @@
   url:  https://github.com/synopse/dmustache
 - name: Racket
   url:  https://github.com/rcherrueau/rastache
+- name: Rust
+  url:  https://github.com/rustache/rustache  
 
 # TODO: include handlebars implementations?
 # - name: Java
