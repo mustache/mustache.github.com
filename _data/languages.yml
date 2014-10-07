@@ -27,8 +27,6 @@
   url:  https://github.com/samskivert/jmustache
 - name: C++
   url:  https://github.com/mrtazz/plustache
-- name: C#
-  url:  https://github.com/jehugaleahsa/mustache-sharp
 - name: Go
   url:  https://github.com/hoisie/mustache
 - name: Lua
@@ -67,6 +65,8 @@
   url:  https://github.com/rcherrueau/rastache
 - name: Rust
   url:  https://github.com/rustache/rustache  
+- name: C#
+  url:  https://github.com/jehugaleahsa/mustache-sharp
 
 # TODO: include handlebars implementations?
 # - name: Java
