@@ -6,7 +6,7 @@
 - name: Vim
   url:  https://github.com/mustache/vim-mustache-handlebars
 - name: Emacs
-  url:  https://gist.github.com/323619
+  url:  http://web-mode.org
 - name: Coda
   url:  https://github.com/bobthecow/Mustache.mode
 - name: Atom
