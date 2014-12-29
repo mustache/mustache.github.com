@@ -1,0 +1,3 @@
+# Contributing
+
+The Mustache Manual — [mustache(5)](http://mustache.github.io/mustache.5.html) and [mustache(1)](http://mustache.github.io/mustache.1.html) — section of the website is automatically generated from [the Ruby implementation's documentation](https://github.com/mustache/mustache/blob/master/man/). To suggest a change, please edit the documentation there and send a pull request to [@mustache/mustache](https://github.com/mustache/mustache). See [Building the manual](https://github.com/mustache/mustache/blob/master/CONTRIBUTING.md#building-the-manual) for more information.
