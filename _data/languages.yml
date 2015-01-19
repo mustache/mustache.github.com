@@ -67,6 +67,8 @@
   url:  https://github.com/rustache/rustache  
 - name: C#
   url:  https://github.com/jehugaleahsa/mustache-sharp
+- name: OCaml
+  url:  https://github.com/rgrinberg/ocaml-mustache
 
 # TODO: include handlebars implementations?
 # - name: Java
