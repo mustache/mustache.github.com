@@ -69,6 +69,8 @@
   url:  https://github.com/jehugaleahsa/mustache-sharp
 - name: OCaml
   url:  https://github.com/rgrinberg/ocaml-mustache
+- name: Bash
+  url:  https://github.com/tests-always-included/mo
 
 # TODO: include handlebars implementations?
 # - name: Java
