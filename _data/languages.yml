@@ -69,6 +69,8 @@
   url:  https://github.com/jehugaleahsa/mustache-sharp
 - name: OCaml
   url:  https://github.com/rgrinberg/ocaml-mustache
+- name: Swift
+  url:  https://github.com/groue/GRMustache.swift
 
 # TODO: include handlebars implementations?
 # - name: Java
