@@ -64,9 +64,7 @@
 - name: Racket
   url:  https://github.com/rcherrueau/rastache
 - name: Rust
-  url:  https://github.com/rustache/rustache  
-- name: C#
-  url:  https://github.com/jehugaleahsa/mustache-sharp
+  url:  https://github.com/rustache/rustache
 - name: OCaml
   url:  https://github.com/rgrinberg/ocaml-mustache
 - name: Swift
