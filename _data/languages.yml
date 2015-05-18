@@ -28,7 +28,7 @@
 - name: C++
   url:  https://github.com/mrtazz/plustache
 - name: C#
-  url:  https://github.com/ubershmekel/mustache.cs
+  url:  https://github.com/ubershmekel/MustacheCs
 - name: Go
   url:  https://github.com/hoisie/mustache
 - name: Lua
