@@ -21,14 +21,12 @@
   url:  https://github.com/groue/GRMustache
 - name: Java
   url:  https://github.com/spullara/mustache.java
-- name: .NET
+- name: C#/.NET
   url:  https://github.com/jdiamond/Nustache
 - name: Android
   url:  https://github.com/samskivert/jmustache
 - name: C++
   url:  https://github.com/mrtazz/plustache
-- name: C#
-  url:  https://github.com/ubershmekel/MustacheCs
 - name: Go
   url:  https://github.com/hoisie/mustache
 - name: Lua
