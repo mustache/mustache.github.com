@@ -21,7 +21,7 @@
   url:  https://github.com/groue/GRMustache
 - name: Java
   url:  https://github.com/spullara/mustache.java
-- name: .NET
+- name: C#/.NET
   url:  https://github.com/jdiamond/Nustache
 - name: Android
   url:  https://github.com/samskivert/jmustache
