@@ -73,6 +73,8 @@
   url:  https://github.com/tests-always-included/mo
 - name: Julia
   url:  https://github.com/jverzani/Mustache.jl
+- name: R
+  url:  https://github.com/edwindj/whisker
 
 # TODO: include handlebars implementations?
 # - name: Java
