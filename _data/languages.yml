@@ -75,6 +75,8 @@
   url:  https://github.com/jverzani/Mustache.jl
 - name: R
   url:  https://github.com/edwindj/whisker
+- name: Crystal
+  url: https://github.com/MakeNowJust/crustache
 
 # TODO: include handlebars implementations?
 # - name: Java
