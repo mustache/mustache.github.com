@@ -26,7 +26,7 @@
 - name: Android
   url:  https://github.com/samskivert/jmustache
 - name: C++
-  url:  https://github.com/mrtazz/plustache
+  url:  https://github.com/no1msd/mstch
 - name: Go
   url:  https://github.com/hoisie/mustache
 - name: Lua
