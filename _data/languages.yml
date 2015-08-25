@@ -77,6 +77,8 @@
   url:  https://github.com/edwindj/whisker
 - name: Crystal
   url: https://github.com/MakeNowJust/crustache
+- name: Common Lisp
+  url: https://github.com/kanru/cl-mustache/
 
 # TODO: include handlebars implementations?
 # - name: Java
