@@ -1,22 +1,70 @@
 body {
-    font-family: Georgia;
+    font-family: Lato;
     color: #333;
 }
 
+.section {
+  margin-bottom: 50px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header .h1 {
+  text-transform: uppercase;
+  color: #022B44;
+  margin-bottom: 0;
+}
+
+.header .h3 {
+  margin-top: 0;
+  color: #D6E1E7;
+}
+
 #logo {
-    color: #000;
+    color: #178EE5;
     height: 180px;
-    width: 200px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     transform: rotate(-90deg);
     text-align: center;
     display: block;
-    font-size: 250px;
+    font-size: 125px;
     font-family: Georgia;
-    margin: 0 auto;
-    line-height: 200px;
-    margin-bottom: -30px;
+    margin-top: -48px;
+}
+
+.sub-header {
+  max-width: 600px;
+  margin:0 auto;
+}
+
+.sub-header p {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom:50px;
+  color: #022B44;
+}
+
+
+.btn {
+  padding: 20px 60px;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid #FA5C1F;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #FA5C1F;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #FA5C1F;
 }
 
 #content {
@@ -51,4 +99,9 @@ textarea, .html {
 .run {
     margin-bottom: 20px;
     font-size: 130%;
+}
+
+
+.footer {
+  margin-bottom: 10px;
 }
