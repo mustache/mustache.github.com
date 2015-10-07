@@ -113,6 +113,24 @@ textarea, .html {
     font-size: 130%;
 }
 
+.get-started {
+  background: #fafafa;
+  height: 200px;
+}
+
+.get-started .inner-container {
+  width: 800px;
+  margin: 0 auto;
+  padding: 70px;
+}
+
+.get-started h2 {
+  text-transform: none;
+  font-weight: 500;
+  margin-top: 13px;
+
+}
+
 .footer {
   margin-bottom: 10px;
   padding: 0 50px;
