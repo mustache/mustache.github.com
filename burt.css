@@ -1,6 +1,16 @@
 body {
     font-family: "Avenir Next";
     color: #002A45;
+    min-width: 800px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #002A45;
+  text-decoration: underline;
 }
 
 .pull-left {
@@ -53,9 +63,24 @@ body {
 
 .section h2 {
   font-size: 24px;
+  margin-bottom: 40px;
   text-align: center;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.language ul {
+    -moz-column-count: 7;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 7;
+    -webkit-column-gap: 20px;
+    column-count: 7;
+    column-gap: 20px;
+    margin-bottom: 80px;
+}
+
+.language ul li {
+  margin:10px 0;
 }
 
 
