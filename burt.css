@@ -1,6 +1,14 @@
 body {
-    font-family: Lato;
-    color: #333;
+    font-family: "Avenir Next";
+    color: #002A45;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float:right;
 }
 
 .section {
@@ -13,48 +21,52 @@ body {
 
 .header .h1 {
   text-transform: uppercase;
-  color: #022B44;
+  color: #002A45;
   margin-bottom: 0;
+  font-size: 34px;
+  font-weight: 400;
 }
 
 .header .h3 {
   margin-top: 0;
-  color: #D6E1E7;
+  color: #8FADBF;
+  font-size: 18px;
+  font-weight:400;
 }
 
-#logo {
-    color: #178EE5;
-    height: 180px;
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    text-align: center;
-    display: block;
-    font-size: 125px;
-    font-family: Georgia;
-    margin-top: -48px;
+.header .logo {
+  margin-top: -8px;
 }
 
 .sub-header {
-  max-width: 600px;
-  margin:0 auto;
+  max-width: 524px;
+  margin:0 auto 100px auto;
+
 }
 
 .sub-header p {
   font-size: 24px;
   line-height: 1.5;
   margin-bottom:50px;
-  color: #022B44;
+  color: #002A45;
+}
+
+.section h2 {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 
 .btn {
-  padding: 20px 60px;
+  padding: 15px 30px;
   text-decoration: none;
   border-radius: 2px;
   border: 1px solid #FA5C1F;
   margin-right: 20px;
   display: inline-block;
+  font-size: 20px;
 }
 
 .btn-primary {
@@ -101,7 +113,23 @@ textarea, .html {
     font-size: 130%;
 }
 
-
 .footer {
   margin-bottom: 10px;
+  padding: 0 50px;
+}
+
+.footer img {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin: 0px auto;
+}
+
+.footer p {
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+.footer p a {
+  color: #002A45;
 }

@@ -47,7 +47,9 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 
 
     <div class="header section">
-      <span id="logo">}}</span>
+      <div class="logo">
+        <img src="images/logo.png" alt="mustache logo" />
+      </div>
       <h1 class="h1">Mustache</h1>
       <h3 class="h3">Logic-less templates</h3>
     </div>
@@ -68,7 +70,7 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 
 
     <div class="language section">
-      <h3 class="h3">Support for over 30 languages</h3>
+      <h2 class="h2">Support for over 30 languages</h3>
       <ul>
         {% for language in site.data.languages %}
           <li><a href="{{ language.url }}">{{ language.name }}</a></li>{% unless forloop.last %}{% endunless %}
@@ -84,8 +86,9 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 
 
     <div class="footer section">
-      <p>This website is hosted by <a href="#">GitHub Pages</a></p>
-      <p>Mustache is an opensource project. <a href="#">help improve it over at Github</a></p>
+      <p class="pull-left">This website is hosted by <a href="#">GitHub Pages</a></p>
+      <img class="logo" src="images/logo-rev.png" alt="mustache logo" />
+      <p class="pull-right">Mustache is an opensource project. <a href="#">help improve it over at Github</a></p>
     </div>
 
 
