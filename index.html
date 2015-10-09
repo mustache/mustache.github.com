@@ -40,49 +40,102 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 <html>
   <head>
     <title>{{ site.name }}</title>
-    <link href="burt.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="extras/960.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="extras/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="burt.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
 
 
-    <div class="header section">
-      <div class="logo">
-        <img src="images/logo.png" alt="mustache logo" />
+    <div class="header section container_12">
+        <div class="grid_12">
+          <div class="logo">
+            <img src="images/logo.png" alt="mustache logo" />
+          </div>
+          <h1 class="h1">Mustache</h1>
+          <h3 class="h3">Logic-less templates</h3>
+        </div>
+    </div>
+
+
+    <div class="sub-header section container_12">
+      <div class="prefix_2 grid_8 suffix_2">
+        <p>Cleanly separate logic from presentation with Mustache.
+          Framework-agnostic, it brings cleaner client-side templates from all.
+        </p>
+        <a href="http://github.com/mustache" class="btn btn-primary">View on GitHub</a>
+        <a href="#" class="btn btn-secondary">Read documentation</a>
       </div>
-      <h1 class="h1">Mustache</h1>
-      <h3 class="h3">Logic-less templates</h3>
     </div>
 
 
-    <div class="sub-header section">
-      <p>Cleanly separate logic from presentation with Mustache.
-        Framework-agnostic, it brings cleaner client-side templates from all.
-      </p>
-      <a href="#" class="btn btn-primary">View on GitHub</a>
-      <a href="#" class="btn btn-secondary">Read documentation</a>
-    </div>
-
-
-    <div class="try-it-out section">
+    <div class="try-it-out section container_12">
       <h2 class="h2">Try it out</h2>
+      <div id="demo">
+        <pre class="grid_4">
+          <code class="html">
+            &lt;h1&gt;'{{header}}'&lt;/h1&gt;<br />{{#bug}}<br />{{/bug}}<br /><br />{{#items}}<br />
+            {{#first}}<br />&lt;li&gt;<br />&lt;strong&gt;{{name}}&lt;/strong&gt;<br />
+            &lt;/li&gt;<br />{{/first}}<br />{{#link}}<br />&lt
+            ;li&gt;<br />&lt;a href=“{{url}}”&gt;<br />{{name}}<br />
+            &lt;/a&gt;<br />&lt;/li&gt;<br />{{/link}}<br />{{/items}}
+          </code>
+        </pre>
+        <pre class="grid_4">
+          <code class="json">
+            {<br />
+              "header": "Colors",<br />
+              "items": [<br />
+                 	{<br />
+            			"name": "red", <br />
+            			"first": true, <br />
+            			"url": "#Red"<br />
+            		},<br />
+                  {<br />
+            			"name": "green", <br />
+            			"link": true, <br />
+            			"url": "#Green"<br />
+            		},<br />
+                  {<br />
+            			"name": "blue",<br />
+            			"link": true,<br />
+            			"url": "#Blue"<br />
+            		}<br />
+              ]
+          </code>
+        </pre>
+        <pre class="grid_4">
+          <code class="html">
+            &lt;h1&gt;Colors&lt;/h1&gt;<br />
+            &lt;li&gt;&lt;strong&gt;red&lt;/strong&gt;&lt;/li&gt;<br />
+            &lt;li&gt;&lt;a href="#Green"&gt;green&lt;/a&gt;&lt;/li&gt;<br />
+            &lt;li&gt;&lt;a href="#Blue"&gt;blue&lt;/a&gt;&lt;/li&gt;
+          </code>
+        </pre>
+      </div>
     </div>
 
 
-    <div class="language section">
-      <h2 class="h2">Support for over 30 languages</h3>
-      <ul>
-        {% for language in site.data.languages %}
-          <li><a href="{{ language.url }}">{{ language.name }}</a></li>{% unless forloop.last %}{% endunless %}
-        {% endfor %}
-      </ul>
+    <div class="language section container_12">
+      <div class="grid_12">
+        <h2 class="h2">Support for over 30 languages</h3>
+        <ul>
+          {% for language in site.data.languages %}
+            <li><a href="{{ language.url }}">{{ language.name }}</a></li>{% unless forloop.last %}{% endunless %}
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
 
     <div class="get-started section">
-      <div class="inner-container">
-        <h2 class="h2 pull-left">Get started with Mustache in your project</h3>
-        <a class="btn btn-primary pull-right" href="#">Read the documentation</a>
+      <div class="container_12 inner-container">
+        <div class="grid_7">
+          <h2 class="h2">Get started with Mustache in your project</h3>
+        </div>
+        <div class="grid_5">
+          <a class="btn btn-primary" href="#">Read the documentation</a>
+        </div>
       </div>
     </div>
 
@@ -98,6 +151,6 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="extras/mustache.js"></script>
     <script src="extras/highlight.js"></script>
-    <script src="tom.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
