@@ -1,5 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Mono);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
 body {
-    font-family: "Avenir Next";
+    font-family: "Lato";
     color: #002A45;
     min-width: 800px;
 }
@@ -17,6 +20,31 @@ p {
     font-size: 30px;
     margin-bottom: 20px;
     text-align: left;
+}
+
+code {
+  max-height: 300px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+table {
+  border-collapse:collapse;
+}
+
+th,td {
+  text-align: left;
+  font-family: "PT Mono";
+  font-size: 14px;
+  color: #999;
+  text-transform: uppercase;
+  background: #232323;
+  border: 1px solid #111;
+}
+
+th, td {
+  width: 320px;
+  padding: 15px;
 }
 
 .pull-left {
@@ -112,23 +140,21 @@ p {
   color: #FA5C1F;
 }
 
-#content {
-    width: 600px;
-    margin: 0 auto;
+.table-content {
+  min-height: 300px;
+  height: 300px;
 }
 
-label {
-
-}
-
-textarea, .html {
-    border: 1px solid #bbb;
-    padding: 5px;
-    width: 100%;
-    height: 350px;
-    font-size: 18px;
-    font-family: Inconsolata, monaco, courier;
-    margin-bottom: 20px;
+.template, .json {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background: #232323;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  font-family: "PT Mono";
 }
 
 .json {

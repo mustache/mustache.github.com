@@ -3,40 +3,6 @@
 # But this way we can gh-pages.
 ---
 <!DOCTYPE html>
-<!--
-                                      _  _
-                            _____*~~~  **  ~~~*_____
-                         __* ___     |\__/|     ___ *__
-                       _*  / 888~~\__(8OO8)__/~~888 \  *_
-                     _*   /88888888888888888888888888\   *_
-                     *   |8888888888888888888888888888|   *
-                    /~*  \8888/~\88/~\8888/~\88/~\8888/  *~
-                   /  ~*  \88/   \/   (88)   \/   \88/  *~
-                  /    ~*  \/          \/          \/  *~
-                 /       ~~*_                      _*~~/
-                /            ~~~~~*___ ** ___*~~~~~  /
-               /                      ~  ~         /
-              /                                  /
-             /                                 /
-            /                                /
-           /                    t__n__r__  /
-          /                    | ####### |
-         /            ___      | ####### |             ____i__           /
-        /  _____p_____l_l____  | ####### |            | ooooo |         qp
-i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
- oooo |_I_|  ##############  | | ####### |oo%Xoox%ooxo| ooooo |p__h__|##%#|
- oooo |ooo|  ##############  | | ####### |o%xo%%xoooo%| ooooo |      |#xx%|
- oooo |ooo|  ##############  | | ####### |o%ooxx%ooo%%| ooooo |######|x##%|
- oooo |ooo|  ##############  | | ####### |oo%%x%oo%xoo| ooooo |######|##%x|
- oooo |ooo|  ##############  | | ####### |%x%%oo%/oo%o| ooooo |######|/#%x|
- oooo |ooo|  ##############  | | ####### |%%x/oo/xx%xo| ooooo |######|#%x/|
- oooo |ooo|  ##############  | | ####### |xxooo%%/xo%o| ooooo |######|#^x#|
- oooo |ooo|  ##############  | | ####### |oox%%o/x%%ox| ooooo |~~~$~~|x##/|
- oooo |ooo|  ##############  | | ####### |x%oo%x/o%//x| ooooo |_KKKK_|#x/%|
- ooo~\|ooo|~\##############  | ~\####### |oox%xo%%oox%~\ooooo |_|~|~\|xx%/|
- ooo ||oHo| |####AAAA######  |h||##XX### |x%x%WWx%%/ox||ooDoo |_| |Y||xGGx|
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  | ~~~~~~~
--->
 <html>
   <head>
     <title>{{ site.name }}</title>
@@ -70,49 +36,34 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 
 
     <div class="try-it-out section container_12">
-      <h2 class="h2">Try it out</h2>
-      <div id="demo">
-        <pre class="grid_4">
-          <code class="html">
-            &lt;h1&gt;'{{header}}'&lt;/h1&gt;<br />{{#bug}}<br />{{/bug}}<br /><br />{{#items}}<br />
-            {{#first}}<br />&lt;li&gt;<br />&lt;strong&gt;{{name}}&lt;/strong&gt;<br />
-            &lt;/li&gt;<br />{{/first}}<br />{{#link}}<br />&lt
-            ;li&gt;<br />&lt;a href=“{{url}}”&gt;<br />{{name}}<br />
-            &lt;/a&gt;<br />&lt;/li&gt;<br />{{/link}}<br />{{/items}}
-          </code>
-        </pre>
-        <pre class="grid_4">
-          <code class="json">
-            {<br />
-              "header": "Colors",<br />
-              "items": [<br />
-                 	{<br />
-            			"name": "red", <br />
-            			"first": true, <br />
-            			"url": "#Red"<br />
-            		},<br />
-                  {<br />
-            			"name": "green", <br />
-            			"link": true, <br />
-            			"url": "#Green"<br />
-            		},<br />
-                  {<br />
-            			"name": "blue",<br />
-            			"link": true,<br />
-            			"url": "#Blue"<br />
-            		}<br />
-              ]
-          </code>
-        </pre>
-        <pre class="grid_4">
-          <code class="html">
-            &lt;h1&gt;Colors&lt;/h1&gt;<br />
-            &lt;li&gt;&lt;strong&gt;red&lt;/strong&gt;&lt;/li&gt;<br />
-            &lt;li&gt;&lt;a href="#Green"&gt;green&lt;/a&gt;&lt;/li&gt;<br />
-            &lt;li&gt;&lt;a href="#Blue"&gt;blue&lt;/a&gt;&lt;/li&gt;
-          </code>
-        </pre>
+      <div class="grid_12">
+        <h2 class="h2">Try it out</h2>
       </div>
+      <div class="clear"></div>
+      <table id="demo">
+        <tr class="table-header">
+          <th>
+            <span>Mustache HTML template</span>
+          </th>
+          <th>
+            <span>JSON input</span>
+          </th>
+          <th>
+            <span>Compiled HTML</span>
+          </th>
+        </tr>
+        <tr class="table-content">
+          <td>
+            <textarea class="template">{% include demo.mustache %}</textarea>
+          </td>
+          <td>
+            <textarea class="json">{% include demo.json %}</textarea>
+          </td>
+          <td>
+            <pre class="html sh_html"></pre>
+          </td>
+        </tr>
+      </table>
     </div>
 
 
@@ -151,6 +102,6 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="extras/mustache.js"></script>
     <script src="extras/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="tom.js"></script>
   </body>
 </html>
