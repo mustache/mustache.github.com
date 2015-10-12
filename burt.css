@@ -1,39 +1,145 @@
 body {
-    font-family: Georgia;
-    color: #333;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-x:hidden; 
+}
+a
+{
+    text-decoration: none;
+}
+.center
+{
+    text-align: center;
+}
+header
+{
+  background: #ff7f50;
+  width:100%;
+  z-index: 100;
+  position: fixed;
 }
 
-#logo {
-    color: #000;
-    height: 180px;
-    width: 200px;
+.brand
+{
+  color: white;
+  float: left;
+}
+nav
+{
+  float: right;
+  width: 100%;
+
+}
+nav ul
+{
+  list-style: none;
+  overflow: hidden;
+  float: right;
+}
+nav ul li
+{
+  float: left;
+
+}
+nav ul li a
+{
+  display: block;
+  padding: 5px;
+  margin-right: 10px;
+  color: white
+}
+nav ul li:hover ul
+{
+    display: block;
+}
+nav ul ul
+{
+    display: none;
+    position: absolute;
+    background: #222;
+    border-radius: 10px;
+    float: left !important;
+
+}
+nav ul ul li a
+{
+    color: #fff;
+    margin-left: -25px;
+    padding: 10px;
+
+
+}
+nav ul ul li a:hover
+{
+    color:#ff7f50;
+}
+.docs
+{
+    margin-bottom: 5px;
+}
+.btn
+{
+    background: #222;
+    padding: 5px;
+    border-radius: 5px;
+}
+.home
+{
+    background: #ff7f50;
+    width:100%;
+    height: 100%;
+    padding-top: 50px;
+}
+.home-Container
+{
+    width: 50%;
+    margin: 0 auto;
+}
+h2
+{
+    font-size: 40px;
+}
+.logo {
+    width: 380px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    text-align: center;
     display: block;
-    font-size: 250px;
     font-family: Georgia;
+    font-size: 200px;
     margin: 0 auto;
     line-height: 200px;
-    margin-bottom: -30px;
-}
+    padding-top: -100px;
 
+}
+.title
+{
+    font-size: 100px;
+    margin-top: -50px;
+    margin-bottom: -30px;
+
+}
+.subtitle
+{
+    font-size: 30px;
+}
+.about
+{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
 #content {
     width: 600px;
     margin: 0 auto;
 }
-
-p {
-    font-size: 30px;
-    margin-bottom: 20px;
-    text-align: left;
+p
+{
+    font-size: 20px;
 }
-
-label {
-
-}
-
 textarea, .html {
     border: 1px solid #bbb;
     padding: 5px;
@@ -51,4 +157,11 @@ textarea, .html {
 .run {
     margin-bottom: 20px;
     font-size: 130%;
+}
+footer
+{
+    background: #222;
+      text-align: center;
+      padding:5px;
+      color: white;
 }
