@@ -1,7 +1,7 @@
----
+<!-- ---
 # Yeah, this should be .mustache
 # But this way we can gh-pages.
----
+--- -->
 <!DOCTYPE html>
 <!--
                                       _  _
@@ -42,12 +42,44 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
     <title>{{ site.name }}</title>
     <link href="burt.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="extras/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <span id="logo">}</span>
-    <div id="content">
-      <p>Logic-less templates.</p>
+    <header>
+ 
+      <nav>
+        <ul class="brand">
+          <li><a href="#home">MUSTACHE</a></li>
+        </ul>
+        <ul>
+        <li>
+        <a class="docs" href="">Documentation <i class="fa fa-caret-down"></i></a>
+          <ul>
+            <li><a style="border-bottom:1px solid white"href="mustache.5.html">Mutache 1</a></li></br>
+            <li><a href="mustache.1.html">Mutache 5</a></li>
+          </ul>
+        </li>
+          <li><a class="btn"href="https://github.com/typicode/jsonplaceholder"><i class="fa fa-code-fork"></i> Fork on Github</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="home" class="home">
+      <div class="home-Container center">
+        <span class="logo">}</span> 
+        <h1 class="title center">MUSTACHE</h1> 
+        <p class="subtitle center">Logic-less templates.</p>  
+      </div>    
+    </section>
+    <section class="about">
+      <div class="home-Container center">
+        <h2>Why mustache?</h2>
+        <p>Mustache can be used for HTML, config files, source code - anything. It works by expanding tags in a template using values provided in a hash or object.</p>
+        <p>We call it "logic-less" because there are no if statements, else clauses, or for loops. Instead there are only tags. Some tags are replaced with a value, some nothing, and others a series of values.</p>
+      </div>
+    </section>
 
+    <div id="content">
       <p>
         Available in
         {% for language in site.data.languages %}
@@ -63,14 +95,6 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
           <a href="{{ editor.url }}">{{ editor.name }}</a>{% unless forloop.last %},{% endunless %}
         {% endfor %}
       </p>
-
-      <p>
-        The Manual:
-        <a href="mustache.5.html">mustache(5)</a>
-        and
-        <a href="mustache.1.html">mustache(1)</a>
-      </p>
-
       <p>
         <a id="demo" href="#demo">Demo</a>
       </p>
@@ -93,6 +117,12 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
 
       <p>GitHub pages: <a href="https://github.com/mustache/mustache.github.com">https://github.com/mustache/mustache.github.com</a></p>
     </div>
+    <footer>
+      <p>
+      Coded and built with <i class="fa fa-heart"></i>.
+      Source code available on <a href="https://github.com/typicode/jsonplaceholder">GitHub</a>.
+     </p>
+    </footer>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="extras/mustache.js"></script>
