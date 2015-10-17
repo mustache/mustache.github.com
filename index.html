@@ -78,52 +78,45 @@ i__p__ /  |  ##############  | | ####### |__l___xp____| ooooo |      |~~~~|
         <p>We call it "logic-less" because there are no if statements, else clauses, or for loops. Instead there are only tags. Some tags are replaced with a value, some nothing, and others a series of values.</p>
       </div>
     </section>
-
-    <div id="content">
-      <p>
-        Available in
-        {% for language in site.data.languages %}
-          {% if forloop.last %}and for{% endif %}
-          <a href="{{ language.url }}">{{ language.name }}</a>{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      </p>
-
-      <p>
-        Works great with
-        {% for editor in site.data.editors %}
-          {% if forloop.last %}and{% endif %}
-          <a href="{{ editor.url }}">{{ editor.name }}</a>{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      </p>
-      <p>
-        <a id="demo" href="#demo">Demo</a>
-      </p>
-
-      <div id="demo-box" style="display:none;">
-        <label>Mustache</label>
-        <textarea class="template">{% include demo.mustache %}</textarea>
-
-        <label>JSON <small>(try setting empty to true)</small></label>
-        <textarea class="json">{% include demo.json %}</textarea>
-
-        <p><input type="button" class="run" value="Render Template"/></p>
-
+    <section class="example">
+      <div class="center"><h2><a id="demo" class="black  center" href="#demo"> Example </a></h2></div> 
+      <div class="example-Container">
+        <div class="code-Box">
+          <label>Mustache</label>
+          <textarea class="template">{% include demo.mustache %}</textarea>
+        </div>
+        <div class="code-Box">
+          <label>JSON <small>(try setting empty to true)</small></label>
+          <textarea class="json">{% include demo.json %}</textarea>
+        </div>
+      </div>    
+    </section>
+    
+    <div class="example-Result">
+      <p><input type="button" class="run" value="Render Template"/></p>
         <label>HTML</label>
         <pre class="html sh_html"></pre>
-      </div>
-
-      <p>IRC: <a href="irc://irc.freenode.net:6667/#{">#{</a> on Freenode</p>
-      <p>Mailing list: <a href="mailto:mustache@librelist.com">mustache@librelist.com</a></p>
-
-      <p>GitHub pages: <a href="https://github.com/mustache/mustache.github.com">https://github.com/mustache/mustache.github.com</a></p>
     </div>
+    <section class="language">
+      <div class="center">
+          <h2>Available in</h2>
+            <div id="content">
+              <p>
+                {% for language in site.data.languages %}
+                  {% if forloop.last %}and for{% endif %}
+                  <a class="black" href="{{ language.url }}">{{ language.name }}</a>{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              </p>
+            </div>
+      </div>
+    </section>
     <footer>
       <p>
-      Coded and built with <i class="fa fa-heart"></i>.
-      Source code available on <a href="https://github.com/typicode/jsonplaceholder">GitHub</a>.
+      Source code available on <a class="coral" href="https://github.com/mustache/mustache.github.com">GitHub</a>.
+      Mailing list: <a class="coral" href="mailto:mustache@librelist.com">mustache@librelist.com</a>
+      IRC: <a class="coral" href="irc://irc.freenode.net:6667/#{">#{</a> on Freenode
      </p>
     </footer>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="extras/mustache.js"></script>
     <script src="extras/highlight.js"></script>
