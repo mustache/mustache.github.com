@@ -140,6 +140,45 @@ p
 {
     font-size: 20px;
 }
+.language
+{
+    background: #ccc;
+    width:100%;
+    height: 100%;
+    padding: 20px;
+}
+.example
+{
+    width:100%;
+    height: 100%;
+    padding: 20px 20px 0px 20px;
+}
+.example-Container
+{
+  display: flex;
+  width:80%;
+  margin: 0 auto;
+  margin-bottom: 0px;
+}
+.example-Result
+{
+  width:75%;
+  margin: 0 auto;
+  padding: 30px; 
+}
+.code-Box
+{
+  width: 50%;
+  margin: 20px 20px 0px 20px;
+}
+.run
+{
+  background: #ff7f50;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 10px;
+}
 textarea, .html {
     border: 1px solid #bbb;
     padding: 5px;
