@@ -58,7 +58,7 @@
 - name: Dart
   url:  https://github.com/valotas/mustache4dart
 - name: Haxe
-  url:  https://github.com/TomahawX/Mustache.hx
+  url:  https://github.com/nadako/hxmustache
 - name: Delphi
   url:  https://github.com/synopse/dmustache
 - name: Racket
