@@ -48,7 +48,7 @@
 - name: D
   url:  https://github.com/repeatedly/mustache-d
 - name: Haskell
-  url:  https://github.com/lymar/hastache
+  url:  https://github.com/JustusAdam/mustache
 - name: XQuery
   url:  https://github.com/dscape/mustache.xq
 - name: ASP
