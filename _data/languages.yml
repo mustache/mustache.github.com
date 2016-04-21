@@ -79,6 +79,8 @@
   url: https://github.com/MakeNowJust/crustache
 - name: Common Lisp
   url: https://github.com/kanru/cl-mustache/
+- name: Smalltalk
+  url: http://norbert.hartl.name/blog/2013/10/03/mustache-templates-for-smalltalk/
 
 # TODO: include handlebars implementations?
 # - name: Java
