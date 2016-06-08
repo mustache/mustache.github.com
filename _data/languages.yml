@@ -79,6 +79,8 @@
   url: https://github.com/MakeNowJust/crustache
 - name: Common Lisp
   url: https://github.com/kanru/cl-mustache/
+- name: Nim
+  url: https://github.com/fenekku/moustachu
 
 # TODO: include handlebars implementations?
 # - name: Java
