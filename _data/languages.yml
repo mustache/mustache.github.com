@@ -2,7 +2,7 @@
 # Please add new languages to the end!
 
 - name: Ruby
-  url:  http://github.com/defunkt/mustache
+  url:  https://github.com/mustache/mustache
 - name: JavaScript
   url:  https://github.com/janl/mustache.js
 - name: Python
