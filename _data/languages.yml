@@ -81,6 +81,8 @@
   url: https://github.com/kanru/cl-mustache/
 - name: Nim
   url: https://github.com/fenekku/moustachu
+- name: Tcl
+  url: https://github.com/ianka/mustache.tcl
 
 # TODO: include handlebars implementations?
 # - name: Java
