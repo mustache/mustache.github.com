@@ -27,6 +27,8 @@
   url:  https://github.com/samskivert/jmustache
 - name: C++
   url:  https://github.com/no1msd/mstch
+- name: CFEngine
+  url:  https://github.com/cfengine/core
 - name: Go
   url:  https://github.com/cbroglie/mustache
 - name: Lua
