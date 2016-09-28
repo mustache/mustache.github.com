@@ -41,8 +41,8 @@
   url:  https://github.com/pmcelhaney/Mustache.cfc
 - name: Scala
   url:  https://github.com/scalate/scalate
-- name: Clojure
-  url:  https://github.com/fhd/clostache
+- name: Clojure[Script]
+  url:  https://github.com/fotoetienne/cljstache
 - name: Fantom
   url:  https://github.com/vspy/mustache
 - name: CoffeeScript
