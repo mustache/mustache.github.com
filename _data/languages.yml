@@ -87,6 +87,8 @@
   url: http://norbert.hartl.name/blog/2013/10/03/mustache-templates-for-smalltalk/
 - name: Tcl
   url: https://github.com/ianka/mustache.tcl
+- name: C
+  url: https://gitlab.com/jobol/mustach
 
 # TODO: include handlebars implementations?
 # - name: Java
