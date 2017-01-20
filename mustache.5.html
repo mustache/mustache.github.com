@@ -168,6 +168,14 @@ supports raising an exception in this situation, for instance.</p>
 * &lt;b&gt;GitHub&lt;/b&gt;
 </code></pre>
 
+<p>When the name of the variable starts with a character that is normally interpreted within
+mustache templating use colon (:) as first character to escape it.
+Writing <code>{{NAME}}</code> is equivalent to writing <code>{{:NAME}}</code> and
+conversely and represent the variable substitution even when
+<code>NAME</code>, the variable name, begins with one of this special characters:
+<code>#^/{&amp;!&gt;:</code>.</p>
+
+
 <h3 id="Sections">Sections</h3>
 
 <p>Sections render blocks of text one or more times, depending on the
