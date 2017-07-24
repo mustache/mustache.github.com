@@ -89,6 +89,8 @@
   url: https://github.com/ianka/mustache.tcl
 - name: C
   url: https://gitlab.com/jobol/mustach
+- name: ABAP
+  url: https://github.com/sbcgua/abap_mustache
 
 # TODO: include handlebars implementations?
 # - name: Java
