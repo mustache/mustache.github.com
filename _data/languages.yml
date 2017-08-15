@@ -9,6 +9,8 @@
   url:  https://github.com/defunkt/pystache
 - name: Erlang
   url:  https://github.com/mojombo/mustache.erl
+- name: Elixir
+  url: https://github.com/schultyy/Mustache.ex
 - name: node.js
   url:  https://github.com/raycmorgan/Mu
 - name: PHP
