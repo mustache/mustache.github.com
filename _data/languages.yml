@@ -93,6 +93,8 @@
   url: https://gitlab.com/jobol/mustach
 - name: ABAP
   url: https://github.com/sbcgua/abap_mustache
+- name: Elm
+  url: https://github.com/truqu/elm-mustache
 
 # TODO: include handlebars implementations?
 # - name: Java
