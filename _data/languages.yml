@@ -22,7 +22,7 @@
 - name: Java
   url:  https://github.com/spullara/mustache.java
 - name: C#/.NET
-  url:  https://github.com/jdiamond/Nustache
+  url:  https://github.com/StubbleOrg/Stubble
 - name: Android
   url:  https://github.com/samskivert/jmustache
 - name: C++
