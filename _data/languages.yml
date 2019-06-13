@@ -43,6 +43,8 @@
   url:  https://github.com/scalate/scalate
 - name: Clojure[Script]
   url:  https://github.com/fotoetienne/cljstache
+- name: Clojure
+  url:  https://github.com/fhd/clostache
 - name: Fantom
   url:  https://github.com/vspy/mustache
 - name: CoffeeScript
