@@ -16,7 +16,7 @@ namespace :build do
     uri = URI("https://raw.github.com")
     Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
       [1, 5].each do |page|
-        resp = http.get("/defunkt/mustache/master/man/mustache.#{page}.html")
+        resp = http.get("/mustache/mustache/master/man/mustache.#{page}.html")
         open("mustache.#{page}.html", "w") do |file|
           header = <<-EOS.gsub(/^ */, '')
             <!DOCTYPE html>
@@ -26,7 +26,7 @@ namespace :build do
             man pages. Rather than sending a pull request to change this file, you
             should update the source:
 
-            https://github.com/defunkt/mustache/blob/master/man/mustache.#{page}.ron
+            https://github.com/mustache/mustache/blob/master/man/mustache.#{page}.ron
 
             -->
           EOS
