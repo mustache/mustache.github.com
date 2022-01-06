@@ -8,7 +8,7 @@
 - name: Python
   url:  https://github.com/noahmorrison/chevron
 - name: Erlang
-  url:  https://github.com/mojombo/mustache.erl
+  url:  https://github.com/exograd/erl-mustache
 - name: Elixir
   url: https://github.com/schultyy/Mustache.ex
 - name: PHP
