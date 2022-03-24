@@ -2,4 +2,4 @@
 
 Logic-less templates.
 
-<http://mustache.github.io>
+<https://mustache.github.io>
