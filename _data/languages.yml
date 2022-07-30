@@ -99,6 +99,8 @@
   url: https://github.com/cashapp/barber
 - name: SQL
   url: https://github.com/microtangents/sql-mustache
+- name: Zig
+  url: https://github.com/batiati/mustache-zig
 
 # TODO: include handlebars implementations?
 # - name: Java
