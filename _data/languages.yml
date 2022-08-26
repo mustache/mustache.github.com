@@ -99,6 +99,8 @@
   url: https://github.com/cashapp/barber
 - name: SQL
   url: https://github.com/microtangents/sql-mustache
+- name: Solidity
+  url: https://github.com/nftgp/solid-mustache
 
 # TODO: include handlebars implementations?
 # - name: Java
