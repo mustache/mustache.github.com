@@ -84,7 +84,7 @@
 - name: Common Lisp
   url: https://github.com/kanru/cl-mustache/
 - name: Nim
-  url: https://github.com/fenekku/moustachu
+  url: https://github.com/soasme/nim-mustache
 - name: Pharo
   url: https://github.com/noha/mustache
 - name: Tcl
