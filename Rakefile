@@ -13,7 +13,7 @@ namespace :build do
 
   desc "Update man pages"
   task :man do
-    uri = URI("https://raw.github.com")
+    uri = URI("https://raw.githubusercontent.com")
     Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
       [1, 5].each do |page|
         resp = http.get("/mustache/mustache/master/man/mustache.#{page}.html")
