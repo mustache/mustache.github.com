@@ -99,6 +99,8 @@
   url: https://github.com/cashapp/barber
 - name: SQL
   url: https://github.com/microtangents/sql-mustache
+- name: PowerShell
+  url: https://github.com/splumhoff/PSMustache
 
 # TODO: include handlebars implementations?
 # - name: Java
