@@ -99,6 +99,8 @@
   url: https://github.com/cashapp/barber
 - name: SQL
   url: https://github.com/microtangents/sql-mustache
+- name: Octave/MATLAB
+  url: https://github.com/microtangents/sql-mustache
 
 # TODO: include handlebars implementations?
 # - name: Java
