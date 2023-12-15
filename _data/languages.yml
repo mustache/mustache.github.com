@@ -101,6 +101,8 @@
   url: https://github.com/microtangents/sql-mustache
 - name: PowerShell
   url: https://github.com/splumhoff/PSMustache
+- name: Odin
+  url: https://github.com/benjamindblock/odin-mustache
 
 # TODO: include handlebars implementations?
 # - name: Java
