@@ -103,6 +103,8 @@
   url: https://github.com/splumhoff/PSMustache
 - name: Odin
   url: https://github.com/benjamindblock/odin-mustache
+- name: Arduino
+  url: https://github.com/floatplane/ministache
 
 # TODO: include handlebars implementations?
 # - name: Java
