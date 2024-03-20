@@ -60,7 +60,7 @@
 - name: Io
   url:  https://github.com/mil/mustache.io
 - name: Dart
-  url:  https://github.com/valotas/mustache4dart
+  url:  https://pub.dev/packages/mustache_template
 - name: Haxe
   url:  https://github.com/nadako/hxmustache
 - name: Delphi
