@@ -6,7 +6,7 @@
 - name: JavaScript
   url:  https://github.com/janl/mustache.js
 - name: Python
-  url:  https://github.com/noahmorrison/chevron
+  url:  https://github.com/PennyDreadfulMTG/pystache
 - name: Erlang
   url:  https://github.com/mojombo/mustache.erl
 - name: Elixir
